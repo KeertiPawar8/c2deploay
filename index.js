@@ -7,9 +7,13 @@ const {userRouter} = require("./routes/user.routes")
 const {blogRouter} = require("./routes/blog.routes");
 const { authenticate } = require("./middlewares/auth");
 
+app.get("/",async(req,res)=>{
+    res.send({msg:"home page"})
+})
 app.use("/",userRouter)
 app.use(authenticate)
 app.use("/",blogRouter)
+
 
 app.listen(process.env.port,async()=>{
     await connection
